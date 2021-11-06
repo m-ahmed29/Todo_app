@@ -11,74 +11,76 @@ class _TodoState extends State<Todo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: ListView.builder(
           itemCount: lst.length,
           itemBuilder: (context, index) {
-            return Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.pinkAccent,
-                ),
-                margin: EdgeInsets.only(top: 20),
-                child: ListTile(
-                  title: Text(
-                    "${lst[index]}",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+            return Center(
+              child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.yellowAccent,
                   ),
-                  trailing: Container(
-                    width: 50,
-                    child: Row(
-                      children: [
-                        GestureDetector(
-                          child: Icon(
-                            Icons.edit,
-                            color: Colors.lightGreen,
-                          ),
-                          onTap: () {
-                            showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    title: Text("Edit Item"),
-                                    content: TextField(
-                                      onChanged: (value) {
-                                        input = value;
-                                      },
-                                    ),
-                                    actions: [
-                                      ElevatedButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              lst.replaceRange(
-                                                  index, index + 1, {input});
-                                            });
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: Text("Edit"))
-                                    ],
-                                  );
-                                });
-                          },
-                        ),
-                        GestureDetector(
-                          child: Icon(
-                            Icons.delete,
-                            color: Colors.white,
-                          ),
-                          onTap: () {
-                            setState(() {
-                              lst.removeAt(index);
-                            });
-                          },
-                        ),
-                      ],
+                  margin: EdgeInsets.only(top: 20),
+                  child: ListTile(
+                    title: Text(
+                      "${lst[index]}",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
                     ),
-                  ),
-                ));
+                    trailing: Container(
+                      width: 50,
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                            child: Icon(
+                              Icons.edit,
+                              color: Colors.black,
+                            ),
+                            onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: Text("Edit Item"),
+                                      content: TextField(
+                                        onChanged: (value) {
+                                          input = value;
+                                        },
+                                      ),
+                                      actions: [
+                                        ElevatedButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                lst.replaceRange(
+                                                    index, index + 1, {input});
+                                              });
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text("Edit"))
+                                      ],
+                                    );
+                                  });
+                            },
+                          ),
+                          GestureDetector(
+                            child: Icon(
+                              Icons.delete,
+                              color: Colors.red,
+                            ),
+                            onTap: () {
+                              setState(() {
+                                lst.removeAt(index);
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  )),
+            );
           }),
       floatingActionButton: Align(
         alignment: Alignment.bottomRight,
@@ -115,7 +117,10 @@ class _TodoState extends State<Todo> {
                 },
                 child: Text(
                   "+",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],

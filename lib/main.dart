@@ -13,9 +13,12 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Center(
-            child: Text("Todo App"),
+            child: Text(
+              "Todo App",
+              style: TextStyle(color: Colors.black),
+            ),
           ),
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: Colors.teal,
         ),
         body: Todo(),
       ),
